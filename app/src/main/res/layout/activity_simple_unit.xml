@@ -1,78 +1,153 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/borders_card"
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <import type="androidx.core.content.ContextCompat"/>
+        <import type="com.itschool.practise261.exerciseextends.R"/>
+        <import type="com.itschool.practise261.exerciseextends.DataBindingAdapters"/>
+        <variable
+            name="item"
+            type="com.itschool.practise261.exerciseextends.model.Unit"/>
+    </data>
 
-    tools:context=".SimpleUnit">
-
-
-    <ImageView
-        android:id="@+id/picture_unit"
-        android:layout_width="259dp"
-        android:layout_height="308dp"
-        android:layout_marginStart="76dp"
-        android:layout_marginTop="36dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/mun"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/name_unit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="68dp"
-        android:layout_marginTop="36dp"
-        android:hint="Название юнита"
-        android:textSize="34dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/picture_unit" />
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/borders_card"
+        tools:context=".SimpleUnit">
 
 
-    <TextView
-        android:id="@+id/health_unit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="68dp"
-        android:layout_marginTop="20dp"
-        android:hint="Здоровье юнита"
-        android:textSize="24dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/name_unit" />
+        <ImageView
+            android:id="@+id/picture_unit"
+            android:layout_width="234dp"
+            android:layout_height="266dp"
+            android:layout_marginTop="36dp"
+            android:scaleType="centerCrop"
+            android:src="@{item.imageName}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/attack_unit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="68dp"
-        android:layout_marginTop="20dp"
-        android:hint="Атака юнита"
-        android:textSize="24dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/health_unit" />
+        <LinearLayout
+            android:id="@+id/name_unit_ll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="48dp"
+            android:layout_marginTop="36dp"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/picture_unit">
 
-    <ImageButton
-        android:id="@+id/bt_forward"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="32dp"
-        android:background="@color/manckinBack"
-        android:src="@drawable/ic_forward"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginEnd="4dp"
+                android:src="@drawable/omega"
+                app:tint="#553322" />
 
-    <ImageButton
-        android:id="@+id/bt_backword"
-        android:layout_width="52dp"
-        android:layout_height="52dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginBottom="36dp"
-        android:background="@color/manckinBack"
-        android:src="@drawable/ic_icon"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/name_unit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Название юнита"
+                android:text="@{item.name}"
+                android:textSize="34sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/picture_unit" />
+        </LinearLayout>
+
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/health_unit_ll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="48dp"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/name_unit_ll">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginEnd="4dp"
+                android:src="@drawable/heart"
+                app:tint="#553322" />
+
+            <TextView
+                android:id="@+id/health_unit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{String.valueOf(item.health)}"
+                android:hint="Здоровье юнита"
+                android:textSize="24dp" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="48dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/health_unit_ll">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginEnd="4dp"
+                android:src="@drawable/cube"
+                app:tint="#553322" />
+
+            <TextView
+                android:id="@+id/attack_unit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{String.valueOf(item.attack)}"
+                android:hint="Атака юнита"
+                android:textSize="24dp" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="229dp">
+
+            <ImageButton
+                android:id="@+id/bt_backword"
+                android:layout_width="52dp"
+                android:layout_height="52dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginBottom="36dp"
+                android:layout_weight="0.2"
+                android:background="@color/manckinBack"
+                android:src="@drawable/ic_icon"
+                app:tint="#553322" />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="0.6" />
+
+            <ImageButton
+                android:id="@+id/bt_forward"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="32dp"
+                android:layout_weight="0.2"
+                android:background="@color/manckinBack"
+                android:rotationX="0"
+                android:rotationY="180"
+                android:src="@drawable/ic_icon"
+                app:tint="#553322" />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
