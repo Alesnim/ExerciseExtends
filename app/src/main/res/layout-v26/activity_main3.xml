@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="name"
+            type="String" />
+
+        <variable
+            name="desc"
+            type="String" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/borders_card"
+
+        tools:context=".MainActivity2">
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_marginHorizontal="44dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="86dp"
+            android:hint="Название юнита"
+            android:text="@{name}"
+            android:textSize="34dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="44dp"
+            android:layout_marginVertical="154dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_name">
+
+            <TextView
+                android:justificationMode="inter_word"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Описание юнита"
+                android:text="@{desc}"
+                android:textSize="20dp" />
+        </ScrollView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

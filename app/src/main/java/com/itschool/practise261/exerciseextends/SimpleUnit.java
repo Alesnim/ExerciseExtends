@@ -1,8 +1,10 @@
 package com.itschool.practise261.exerciseextends;
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -18,8 +20,6 @@ import com.itschool.practise261.exerciseextends.model.Skeleton;
 import com.itschool.practise261.exerciseextends.model.Unit;
 
 public class SimpleUnit extends AppCompatActivity {
-    TextView tw_name, tw_healh, tw_attack;
-    ImageView imageView;
     ImageButton forward, backward;
 
     int num = 0;
@@ -37,7 +37,7 @@ public class SimpleUnit extends AppCompatActivity {
         toView(binding, num);
         binding.btForward.setOnClickListener(view -> forward());
         binding.btBackword.setOnClickListener(view -> backView());
-
+        binding.btShare.setOnClickListener(this::shareUnit);
 
     }
 
@@ -67,5 +67,14 @@ public class SimpleUnit extends AppCompatActivity {
         Log.d("Extern", Integer.toString(num));
     }
 
+
+    private void shareUnit(View v) {
+        Intent i = new Intent(Intent.ACTION_SEND);
+        i.putExtra("NAME_UNIT", binding.getItem().name);
+        i.setType("text/plain");
+        Intent chooser = Intent.createChooser(i, "title");
+        startActivity(chooser);
+
+    }
 
 }

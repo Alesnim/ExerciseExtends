@@ -5,8 +5,15 @@
       <map>
         <entry key="app/src/main/res/drawable/borders_card.xml" value="0.139" />
         <entry key="app/src/main/res/drawable/rounded_bg.xml" value="0.297" />
+        <entry key="app/src/main/res/layout-v26/activity_main3.xml" value="0.26992753623188404" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_main2.xml" value="0.2653985507246377" />
+        <entry key="app/src/main/res/layout/activity_main3.xml" value="0.2653985507246377" />
         <entry key="app/src/main/res/layout/activity_simple_unit.xml" value="0.35643115942028986" />
+        <entry key="app/src/main/res/layout/content_main.xml" value="0.2653985507246377" />
+        <entry key="app/src/main/res/layout/fragment_first.xml" value="0.2653985507246377" />
+        <entry key="app/src/main/res/layout/fragment_main.xml" value="0.2653985507246377" />
+        <entry key="app/src/main/res/layout/fragment_second.xml" value="0.2653985507246377" />
       </map>
     </option>
   </component>
