@@ -35,22 +35,15 @@ public class SimpleUnit extends AppCompatActivity {
         units[2] = new Skeleton(10, 10, "Spooky Skeleton", 1, this);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_simple_unit);
         toView(binding, num);
-        tw_name = binding.nameUnit;
-        tw_attack = binding.attackUnit;
-        tw_healh = binding.healthUnit;
-        imageView = binding.pictureUnit;
-        forward = binding.btForward;
-        backward = binding.btBackword;
+        binding.btForward.setOnClickListener(view -> forward());
+        binding.btBackword.setOnClickListener(view -> backView());
 
-
-        forward.setOnClickListener(view -> forward());
-        backward.setOnClickListener(view -> backView());
 
     }
 
     private void forward() {
         if (num >= 2) {
-            num=0;
+            num = 0;
         } else {
             num++;
         }
@@ -71,12 +64,6 @@ public class SimpleUnit extends AppCompatActivity {
     private void toView(ActivitySimpleUnitBinding binding, int num) {
         Unit un = units[num];
         binding.setItem(un);
-//        tw_name.setText(un.name);
-//        tw_attack.setText(Integer.toString(un.attack));
-//        tw_healh.setText(Integer.toString(un.health));
-//        Drawable im = ContextCompat.getDrawable(this, Integer.parseInt(un.imageName));
-//        imageView.setImageDrawable(im);
-
         Log.d("Extern", Integer.toString(num));
     }
 
